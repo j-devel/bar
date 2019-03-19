@@ -6,7 +6,7 @@ class App extends SDK.App {
     // override
     static createWorld() {
         const [world, chunkSize] = super.createWorld();
-        world.createFlatWorld(6, BLOCK.CONCRETE);
+        world.createFlatWorld(2, BLOCK.DIRT);
         world.setSpawnPose([4.0, 1.5, 8, -Math.PI/16, -Math.PI/2, 0]);
         return [world, chunkSize];
     }
