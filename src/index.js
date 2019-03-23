@@ -5,14 +5,14 @@ const SDK = window.requirejs('w3reality-sdk');
 class App extends SDK.App {
     // override
     static createWorld() {
-        const world = super.createWorld();
-        world.createFlatWorld(2, BLOCK.DIRT);
+        const world = new World(8, 8, 8);
+        world.createFlatWorld(2, BLOCK.GLASS);
         world.setSpawnPose([4.0, 1.5, 8, -Math.PI/16, -Math.PI/2, 0]);
         return world;
     }
 
     // override
-    constructor(data, name="foo") {
+    constructor(data, name="super") {
         super(data, name);
         this.set_block(0, 0, 6, BLOCK.MODEL_TEST);
         this.say('welcome');
