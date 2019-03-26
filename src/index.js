@@ -15,12 +15,25 @@ class App extends SDK.App {
     constructor(data, name="bar") {
         super(data, name);
         this.set_block(0, 0, 6, BLOCK.MODEL_TEST);
-        this.say('welcome');
+
+        // window.THREE is available
+        const geometry = new THREE.BoxGeometry( 1, 1, 1 );
+        const material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+        const cube = new THREE.Mesh(geometry, material);
+        cube.position.set(1, 1, 4);
+        this.cube = cube;
+        const scene = new THREE.Scene();
+        scene.add(cube);
+        this.setScene(scene); // the scene set is auto cleared on free()
     }
 
     // override
     update() {
         super.update();
+
+        const t = window.performance.now() / 1000.;
+        // console.log('t:', t);
+        this.cube.rotation.x = Math.PI/2 * t;
     }
 
     // override
