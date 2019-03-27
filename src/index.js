@@ -8,13 +8,14 @@ class App extends SDK.App {
         const world = new World(8, 8, 8);
         world.createFlatWorld(2, BLOCK.GLASS);
         world.setSpawnPose([4.0, 1.5, 8, -Math.PI/16, -Math.PI/2, 0]);
+        world.setChunkSize(4);
         return world;
     }
 
     // override
     constructor(data, name="bar") {
         super(data, name);
-        this.set_block(0, 0, 6, BLOCK.MODEL_TEST);
+        this.set_block(0, 0, 6, BLOCK.MODEL_TEST); // FIXME: currently broken
 
         // window.THREE is available
         const geometry = new THREE.BoxGeometry( 1, 1, 1 );
